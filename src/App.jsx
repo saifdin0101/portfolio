@@ -82,8 +82,9 @@ function App() {
         </div>
         <div></div>
       </div>
-      <div className="w-[100vw] flex justify-center items-center flex-col">
-      </div>
+      {/* <div className="w-[100vw] flex justify-center items-center flex-col">
+        <div className="h-[80vh]  w-[80%] bg-[#081b29] rounded-tl-xl rounded-tr-xl flex flex-col gap-7"></div>
+      </div> */}
     </div>
   );
 }
