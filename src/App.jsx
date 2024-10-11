@@ -1,37 +1,75 @@
 import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
+import { useEffect, useRef } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { Moving } from "./compenent/cercle";
+import { motion, useInView } from "framer-motion";
 function App() {
+  useEffect(() => {
+    Aos.init({ duration: 3000 });
+  }, []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+
+  const fadeIn = (direction, delay) => {
+    return {
+      hidden: {
+        opacity: 0,
+        y: direction === "up" ? 100 : 0,
+      },
+      show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          type: "tween",
+          duration: 0.8,
+          delay: delay,
+        },
+      },
+    };
+  };
+
   return (
     <div className="body h-screen overflow-y-auto overflow-x-hidden bg-main-gradient flex flex-col pt-10">
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex justify-center items-center flex-col w-full ">
-          <div className="home h-[80vh] w-[80%]   rounded-tl-xl rounded-tr-xl flex flex-col gap-9 ">
-            <nav className="text-white flex h-[7rem] justify-center items-center gap-[45rem]">
-              <div className="font-bold text-2xl">
+          {/* home */}
+          <motion.div
+            variants={fadeIn("up", 0.1)}
+            initial="hidden"
+            animate="show"
+            className="home h-[80vh] w-[80%]   rounded-tl-xl rounded-tr-xl flex flex-col gap-5 "
+          >
+            <nav className="text-white flex h-[7rem] justify-center items-center gap-[40rem]">
+              <div data-aos="flip-left" className="font-bold text-2xl">
                 Saif-Eddine <span className="text-maincolor text-3xl ">.</span>
               </div>
               <div className="flex justify-center items-center gap-5">
                 <a
+                  data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
                   href=""
                 >
                   Home
                 </a>
                 <a
+                  data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
                   href=""
                 >
                   About
                 </a>
                 <a
+                  data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
                   href=""
                 >
                   Skill
                 </a>
                 <a
+                  data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
                   href=""
                 >
@@ -41,15 +79,31 @@ function App() {
             </nav>
             <div className="h-[50vh] w-full flex">
               <div className="w-[70%] h-full text-white flex justify-center items-center flex-col gap-5">
-                <h1 className="text-4xl font-semibold">Hi, I'm Saif-Eddine</h1>
-                <p className="font-bold text-xl text-maincolor">A Developer</p>
-                <p className="text-sm text-[#d0d1d1] font-lg">
+                <h1
+                  data-aos="fade-right"
+                  className="text-5xl  font-semibold bg-gradient-to-r from-maincolor via-slate-500 to-blue-100 bg-clip-text  tracking-tight text-transparent"
+                >
+                  Hi, I'm Saif-Eddine
+                </h1>
+                <p
+                  data-aos="fade-left"
+                  className="font-bold  bg-gradient-to-r from-maincolor via-slate-500 to-blue-100 bg-clip-text text-4xl tracking-tight text-transparent"
+                >
+                  A Developer
+                </p>
+                <p
+                  data-aos="fade-right"
+                  className="text-sm text-[#d0d1d1] font-lg text-center"
+                >
                   Enthusiastic web developer dedicated to crafting engaging and
                   innovative online <br /> experiences. Always eager to learn
                   and adapt to new challenges in the ever-evolving <br />{" "}
                   digital landscape, fostering collaboration and creativity.
                 </p>
-                <button className="text-maincolor border-2 w-[150px] h-[40px] border-maincolor rounded-lg hover:duration-200 hover:bg-maincolor font-semibold hover:text-white">
+                <button
+                  data-aos="flip-right"
+                  className="text-maincolor border-2 w-[150px] h-[40px] border-maincolor rounded-lg hover:duration-200 hover:bg-maincolor font-semibold hover:text-white"
+                >
                   Lets Talk
                 </button>
               </div>
@@ -58,32 +112,56 @@ function App() {
 
             <div className="text-maincolor pl-[50px] flex gap-3 z-30 text-xl w-[50px]">
               <a
+                data-aos="fade-left"
                 className="border-maincolor border-2 rounded-full flex justify-center items-center hover:duration-200 hover:bg-maincolor hover:text-white p-2"
                 href=""
               >
                 <FaFacebookF />
               </a>
               <a
+                data-aos="zoom-in"
                 className="border-maincolor border-2 rounded-full flex justify-center items-center hover:duration-200 hover:bg-maincolor hover:text-white p-2"
                 href=""
               >
                 <FaLinkedinIn />
               </a>
               <a
+                data-aos="fade-right"
                 className="border-maincolor border-2 rounded-full flex justify-center items-center hover:duration-200 hover:bg-maincolor hover:text-white p-2"
                 href=""
               >
                 <FaInstagram />
               </a>
             </div>
-          </div>
-
-          <div className="w-[80%] text-white flex flex-col justify-center gap-6 items-center h-[65vh] bg-[#122e43] rounded-bl-xl rounded-br-xl">
-            <div className="text-4xl font-semibold">
+          </motion.div>
+          {/* about */}
+          <motion.div
+            ref={ref}
+            variants={fadeIn("up", 0.5)}
+            initial="hidden"
+            animate="show"
+            className="w-[80%] text-white flex flex-col justify-center gap-6 items-center h-[70vh] bg-[#122e43] rounded-bl-xl rounded-br-xl"
+          >
+            <motion.div
+              variants={fadeIn("up", 0.8)}
+              initial="hidden"
+              animate="show"
+              className="text-4xl font-semibold"
+            >
               About <span className="text-maincolor">Me</span>
-            </div>
-            <div className="h-[11rem] w-[11rem] bg-red-500 rounded-full"></div>
-            <div className="text-xl font-semibold flex flex-col justify-center items-center gap-2">
+            </motion.div>
+            <motion.div className="h-[11rem] w-[11rem] ai rounded-full flex justify-center items-center ">
+              <div className="">
+                <Moving width={225} height={225} />
+              </div>
+            </motion.div>
+            <motion.div
+              ref={ref}
+              variants={fadeIn("left", 1)}
+              initial="hidden"
+              animate={isInView ? "hidden" : "show"}
+              className="text-xl font-semibold flex flex-col justify-center items-center gap-2"
+            >
               <div>Front & Back-End Developer</div>
               <p className="text-sm text-[#d0d1d1] font-lg text-center">
                 Enthusiastic web developer dedicated to crafting engaging and
@@ -91,21 +169,66 @@ function App() {
                 adapt to new challenges in the ever-evolving <br /> digital
                 landscape, fostering collaboration and creativity.
               </p>
-            </div>
+            </motion.div>
             <button className="text-maincolor border-2 w-[150px] h-[40px] border-maincolor rounded-lg hover:duration-200 hover:bg-maincolor font-semibold hover:text-white">
               Lets Talk
             </button>
+          </motion.div>
+        </div>
+        {/* projects  */}
+        <motion.div
+          ref={ref}
+          variants={fadeIn("down", 1.5)}
+          initial="hidden"
+          animate="show"
+          className="w-[80%] relative flex text-white  items-center flex-col h-[80vh] bg-[#081b29] rounded-tl-xl rounded-tr-xl mt-5"
+        >
+          <div className="text-4xl font-semibold pt-10">
+            My <span className="text-maincolor">Project</span>
           </div>
-        </div>
 
-        <div className="w-[80%] flex justify-center items-center flex-col h-[80vh] bg-[#081b29] rounded-tl-xl rounded-tr-xl mt-5">
-          {/* Content for new section */}
-        </div>
-        <div className="w-[80%] text-white flex justify-center items-center flex-col h-[70vh] bg-[#122e43] rounded-tl-xl rounded-tr-xl mt-5">
+          <div className="absolute top-[150px] flex gap-10">
+            <div class="card">
+              <div class="first-content">
+                <span>First</span>
+              </div>
+              <div class="second-content">
+                <span>Second</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="first-content">
+                <span>First</span>
+              </div>
+              <div class="second-content">
+                <span>Second</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="first-content">
+                <span>First</span>
+              </div>
+              <div class="second-content">
+                <span>Second</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="first-content">
+                <span>First</span>
+              </div>
+              <div class="second-content">
+                <span>Second</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+        {/* <div className="w-[80%] text-white flex justify-center items-center flex-col h-[50vh]    "></div> */}
+        {/* skills */}
+        <motion.div className="w-[80%] text-white flex justify-center items-center flex-col h-[100vh] bg-[#122e43] rounded-bl-xl rounded-br-xl">
           <h1 className="font-semibold text-4xl">
             My <span className="text-maincolor">Skills</span>
           </h1>
-          <div className="flex gap-10 pt-10">
+          <div className="flex gap-10 pt-5">
             <div className="flex gap-10 pt-10">
               <div className="h-[25rem] flex justify-center items-center flex-col border-maincolor border-[2px] rounded-2xl w-[28rem] ">
                 <div className="h-[6rem] gap-1 w-[90%] flex flex-col justify-center items-center ">
@@ -209,13 +332,88 @@ function App() {
                 </div>
               </div>
             </div>
-
-            <div></div>
           </div>
-          {/* Content for new section */}
-        </div>
+        </motion.div>
+        {/* Contact */}
+        <motion.div
+          ref={ref}
+          variants={fadeIn("down", 0.5)}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+          className="w-[80%] flex text-white justify-center pt-5 items-center flex-col h-[85vh] bg-[#081b29] rounded-tl-xl rounded-tr-xl mt-5"
+        >
+          <motion.h1
+            ref={ref}
+            variants={fadeIn("down", 1)}
+            initial="hidden"
+            animate={isInView ? "show" : "hidden"}
+            className="font-semibold text-4xl pb-5 "
+          >
+            Contact <span className="text-maincolor">Me</span>
+          </motion.h1>
+          <div className="h-[80%] w-[60%]   flex gap-2 justify-center items-center flex-wrap">
+            <motion.input
+              ref={ref}
+              variants={fadeIn("down", 1.2)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              placeholder="Full Name"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              type="text"
+            />
+            <motion.input
+              ref={ref}
+              variants={fadeIn("down", 1.3)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              placeholder="Email Adress"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              type="text"
+            />
+            <motion.input
+              ref={ref}
+              variants={fadeIn("down", 1.4)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              placeholder="Phone Number"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              type="text"
+            />
+            <motion.input
+              ref={ref}
+              variants={fadeIn("down", 1.5)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              placeholder="Emain Subject"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              type="text"
+            />
+            <motion.textarea
+              ref={ref}
+              variants={fadeIn("down", 1.6)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}
+              placeholder="Whats All About..."
+              className="rounded-xl pl-4 bg-transparent pt-3  border-maincolor border-[2px] "
+              rows={10}
+              cols={85}
+              name=""
+              id=""
+            ></motion.textarea>
+
+            <motion.button ref={ref}
+              variants={fadeIn("down", 1.8)}
+              initial="hidden"
+              animate={isInView ? "show" : "hidden"}  class="btn button1 font-lg text-lg"> Submit</motion.button>
+          </div>
+        </motion.div>
       </div>
+      <div className="h-[80%] w-[60%]   flex gap-2 justify-center items-center flex-wrap">
+
+      </div>
+      
     </div>
+    
   );
 }
 
