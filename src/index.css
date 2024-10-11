@@ -2,71 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @keyframes slideIn {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: 80%; 
-    }
+  0% {
+    width: 0%;
   }
-  
-  @keyframes htmlAnimation {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 80%; 
-    }
+  100% {
+    width: 80%;
   }
-  
-  @keyframes cssAnimation {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 70%; 
-    }
+}
+
+@keyframes htmlAnimation {
+  from {
+    width: 0%;
   }
-  
-  @keyframes jsAnimation {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 20%; 
-    }
+  to {
+    width: 80%;
   }
-  
-  @keyframes reactAnimation {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 40%; 
-    }
+}
+
+@keyframes cssAnimation {
+  from {
+    width: 0%;
   }
-  
-  .fill-animation {
-    animation-fill-mode: forwards; 
+  to {
+    width: 70%;
   }
-  
-  .html-animation {
-    animation: htmlAnimation 2s forwards;
+}
+
+@keyframes jsAnimation {
+  from {
+    width: 0%;
   }
-  
-  .css-animation {
-    animation: cssAnimation 2s forwards;
+  to {
+    width: 20%;
   }
-  
-  .js-animation {
-    animation: jsAnimation 2s forwards;
+}
+
+@keyframes reactAnimation {
+  from {
+    width: 0%;
   }
-  
-  .react-animation {
-    animation: reactAnimation 2s forwards;
+  to {
+    width: 40%;
   }
-  
-  
+}
+
+.fill-animation {
+  animation-fill-mode: forwards;
+}
+
+.html-animation {
+  animation: htmlAnimation 2s forwards;
+}
+
+.css-animation {
+  animation: cssAnimation 2s forwards;
+}
+
+.js-animation {
+  animation: jsAnimation 2s forwards;
+}
+
+.react-animation {
+  animation: reactAnimation 2s forwards;
+}
+
+.home {
+  background: linear-gradient(to right, rgba(8, 27, 41, 1) 60%, transparent ),
+    url("https://img.freepik.com/premium-vector/programming-code-coding-hacker-background-programming-code-icon-made-with-binary-code_127544-815.jpg");
+  background-size: cover;
+  background-position: center;
+}

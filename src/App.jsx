@@ -7,7 +7,7 @@ function App() {
     <div className="body h-screen overflow-y-auto overflow-x-hidden bg-main-gradient flex flex-col pt-10">
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex justify-center items-center flex-col w-full ">
-          <div className="home h-[80vh] w-[80%] bg-[#081b29] rounded-tl-xl rounded-tr-xl flex flex-col gap-9 ">
+          <div className="home h-[80vh] w-[80%]   rounded-tl-xl rounded-tr-xl flex flex-col gap-9 ">
             <nav className="text-white flex h-[7rem] justify-center items-center gap-[45rem]">
               <div className="font-bold text-2xl">
                 Saif-Eddine <span className="text-maincolor text-3xl ">.</span>
