@@ -12,6 +12,14 @@ function App() {
   }, []);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const handleSmoothScroll = (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const fadeIn = (direction, delay) => {
     return {
@@ -40,38 +48,55 @@ function App() {
             variants={fadeIn("up", 0.1)}
             initial="hidden"
             animate="show"
-            className="home h-[80vh] w-[80%]   rounded-tl-xl rounded-tr-xl flex flex-col gap-5 "
+            id="home"
+            className="home  h-[80vh] w-[80%]   rounded-tl-xl rounded-tr-xl flex flex-col gap-5 "
           >
-            <nav className="text-white flex h-[7rem] justify-center items-center gap-[40rem]">
-              <div data-aos="flip-left" className="font-bold text-2xl">
+            <nav className="text-white  flex h-[7rem] justify-center items-center gap-[40rem]">
+              <div data-aos="flip-left" className="font-bold text-2xl  ">
                 Saif-Eddine <span className="text-maincolor text-3xl ">.</span>
               </div>
               <div className="flex justify-center items-center gap-5">
                 <a
                   data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
-                  href=""
+                  href="#home"
+                  onClick={handleSmoothScroll}
                 >
                   Home
                 </a>
+
                 <a
                   data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
-                  href=""
+                  href="#about"
+                  onClick={handleSmoothScroll}
                 >
                   About
                 </a>
+
                 <a
                   data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
-                  href=""
+                  href="#jurney"
+                  onClick={handleSmoothScroll}
+                >
+                  Projects
+                </a>
+
+                <a
+                  data-aos="flip-left"
+                  className="font-semibold hover:text-maincolor hover:duration-200"
+                  href="#skill"
+                  onClick={handleSmoothScroll}
                 >
                   Skill
                 </a>
+
                 <a
                   data-aos="flip-left"
                   className="font-semibold hover:text-maincolor hover:duration-200"
-                  href=""
+                  href="#contact"
+                  onClick={handleSmoothScroll}
                 >
                   Contact
                 </a>
@@ -136,6 +161,7 @@ function App() {
           </motion.div>
           {/* about */}
           <motion.div
+            id="about"
             ref={ref}
             variants={fadeIn("up", 0.5)}
             initial="hidden"
@@ -177,6 +203,7 @@ function App() {
         </div>
         {/* projects  */}
         <motion.div
+          id="jurney"
           ref={ref}
           variants={fadeIn("down", 1.5)}
           initial="hidden"
@@ -222,16 +249,24 @@ function App() {
             </div>
           </div>
         </motion.div>
+
         {/* <div className="w-[80%] text-white flex justify-center items-center flex-col h-[50vh]    "></div> */}
         {/* skills */}
-        <motion.div className="w-[80%] text-white flex justify-center items-center flex-col h-[100vh] bg-[#122e43] rounded-bl-xl rounded-br-xl">
+        <motion.div
+          ref={ref}
+          id="skill"
+          variants={fadeIn("down", 1.5)}
+          initial="hidden"
+          animate="show"
+          className="w-[80%] text-white flex justify-center items-center flex-col h-[100vh] bg-[#122e43] rounded-bl-xl rounded-br-xl"
+        >
           <h1 className="font-semibold text-4xl">
             My <span className="text-maincolor">Skills</span>
           </h1>
           <div className="flex gap-10 pt-5">
             <div className="flex gap-10 pt-10">
               <div className="h-[25rem] flex justify-center items-center flex-col border-maincolor border-[2px] rounded-2xl w-[28rem] ">
-                <div className="h-[6rem] gap-1 w-[90%] flex flex-col justify-center items-center ">
+                <motion.div className="h-[6rem] gap-1 w-[90%] flex flex-col justify-center items-center ">
                   <div className="flex justify-between items-center w-full px-5">
                     <div className="text-white">HTML</div>
                     <div className="text-white">80%</div>
@@ -241,7 +276,7 @@ function App() {
                       <div className="bg-maincolor h-[70%] rounded html-animation"></div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 <div className="h-[6rem] gap-1 w-[90%] flex flex-col justify-center items-center ">
                   <div className="flex justify-between items-center w-full px-5">
@@ -336,6 +371,7 @@ function App() {
         </motion.div>
         {/* Contact */}
         <motion.div
+          id="contact"
           ref={ref}
           variants={fadeIn("down", 0.5)}
           initial="hidden"
@@ -401,19 +437,21 @@ function App() {
               id=""
             ></motion.textarea>
 
-            <motion.button ref={ref}
+            <motion.button
+              ref={ref}
               variants={fadeIn("down", 1.8)}
               initial="hidden"
-              animate={isInView ? "show" : "hidden"}  class="btn button1 font-lg text-lg"> Submit</motion.button>
+              animate={isInView ? "show" : "hidden"}
+              class="btn button1 font-lg text-lg"
+            >
+              {" "}
+              Submit
+            </motion.button>
           </div>
         </motion.div>
       </div>
-      <div className="h-[80%] w-[60%]   flex gap-2 justify-center items-center flex-wrap">
-
-      </div>
-      
+      <div className="h-[80%] w-[60%]   flex gap-2 justify-center items-center flex-wrap"></div>
     </div>
-    
   );
 }
 
