@@ -6,6 +6,12 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { Moving } from "./compenent/cercle";
 import { motion, useInView } from "framer-motion";
+import { Next } from "./compenent/next";
+import Fashion from "./assets/images/fast-fashion-concept-with-piles-clothes.jpg";
+import Design from "./assets/images/prooooj.jpg";
+import Teamwork from "./assets/images/teamwork.avif";
+import Proj4 from "./assets/images/lastbut.jpg";
+// import { AboutBackground } from "./animation/aboutbg";
 function App() {
   useEffect(() => {
     Aos.init({ duration: 3000 });
@@ -166,8 +172,12 @@ function App() {
             variants={fadeIn("up", 0.5)}
             initial="hidden"
             animate="show"
-            className="w-[80%] text-white flex flex-col justify-center gap-6 items-center h-[70vh] bg-[#122e43] rounded-bl-xl rounded-br-xl"
+            className="w-[80%] text-white relative flex flex-col justify-center gap-6 items-center h-[70vh] bg-[#122e43] rounded-bl-xl rounded-br-xl"
           >
+            {/* <div className=" absolute right-[200px]">
+              <AboutBackground/>
+            </div> */}
+
             <motion.div
               variants={fadeIn("up", 0.8)}
               initial="hidden"
@@ -208,7 +218,7 @@ function App() {
           variants={fadeIn("down", 1.5)}
           initial="hidden"
           animate="show"
-          className="w-[80%] relative flex text-white  items-center flex-col h-[80vh] bg-[#081b29] rounded-tl-xl rounded-tr-xl mt-5"
+          className="w-[80%] relative flex text-white  items-center flex-col h-[70vh] bg-[#081b29] rounded-tl-xl rounded-tr-xl mt-5"
         >
           <div className="text-4xl font-semibold pt-10">
             My <span className="text-maincolor">Project</span>
@@ -216,38 +226,100 @@ function App() {
 
           <div className="absolute top-[150px] flex gap-10">
             <div class="card">
-              <div class="first-content">
-                <span>First</span>
+              <div class="first-content flex-col gap-4">
+                <img
+                  className="bg-cover bg-red-500 z-30 h-full rounded-[10px] w-full"
+                  src={Fashion}
+                  alt=""
+                />
               </div>
-              <div class="second-content">
-                <span>Second</span>
-              </div>
-            </div>
-            <div class="card">
-              <div class="first-content">
-                <span>First</span>
-              </div>
-              <div class="second-content">
-                <span>Second</span>
-              </div>
-            </div>
-            <div class="card">
-              <div class="first-content">
-                <span>First</span>
-              </div>
-              <div class="second-content">
-                <span>Second</span>
+              <div class="second-content flex-col gap-10 home pl-3">
+                <div className="text-sm font-thin flex justify-center items-center">
+                  Welcome to our fashion-forward website where style meets
+                  convenience! Explore the latest trends and timeless classics,
+                  curated just for you.
+                </div>
+                <button className="cta  bg-[#801e1e] text-lg bottom-[50px]">
+                  <span className="span text-sm font-thin ">check it Out</span>
+                  <span className="second">
+                    <Next width={20} height={20} />
+                  </span>
+                </button>
               </div>
             </div>
             <div class="card">
-              <div class="first-content">
-                <span>First</span>
+              <div class="first-content flex-col gap-4">
+                <img
+                  className="object-cover bg-red-500 z-30 h-full rounded-[10px] w-full"
+                  src={Design}
+                  alt=""
+                />
               </div>
-              <div class="second-content">
-                <span>Second</span>
+              <div class="second-content flex-col gap-5 home pl-3">
+                <div className="text-sm font-thin flex justify-center items-center">
+                  Connect with friends and discover new communities on our
+                  vibrant social media platform. Share your thoughts, photos,
+                  and experiences with people from around the world. Stay
+                   and join the conversation that
+                  matters to you!
+                </div>
+                <button className="cta  bg-[#801e1e] text-lg bottom-[50px]">
+                  <span className="span text-sm font-thin ">check it Out</span>
+                  <span className="second">
+                    <Next width={20} height={20} />
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="first-content flex-col gap-2">
+                <img
+                  className="bg-cover  z-30 h-full rounded-[10px] w-full"
+                  src={Teamwork}
+                  alt=""
+                />
+              </div>
+              <div class="second-content flex-col gap-5 home pl-3">
+                <div className="text-sm font-thin flex justify-center items-center">
+                  Welcome to our fashion-forward website where style meets
+                  Collaborate effortlessly and stay connected with your team, no matter where you are. Organize tasks, share ideas, and achieve goals together on one unified platform.
+                </div>
+                <button className="cta  bg-[#801e1e] text-lg bottom-[50px]">
+                  <span className="span text-sm font-thin ">check it Out</span>
+                  <span className="second">
+                    <Next width={20} height={20} />
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="first-content flex-col gap-4">
+                <img
+                  className="bg-cover bg-red-500 z-30 h-full rounded-[10px] w-full"
+                  src={Proj4}
+                  alt=""
+                />
+              </div>
+              <div class="second-content flex-col gap-5 home pl-3">
+                <div className="text-sm font-thin flex justify-center items-center">
+                Bring your ideas to life with our streamlined website project platform. Design, build, and launch your website with ease—no coding skills required!
+                </div>
+                <button className="cta  bg-[#801e1e] text-lg bottom-[50px]">
+                  <span className="span text-sm font-thin ">check it Out</span>
+                  <span className="second">
+                    <Next width={20} height={20} />
+                  </span>
+                </button>
               </div>
             </div>
           </div>
+          <button className="cta absolute bg-maincolor bottom-[50px]">
+            <span className="span ">NEXT</span>
+            <span className="second">
+              <Next width={20} height={20} />{" "}
+              {/* Adjusted height to match text size */}
+            </span>
+          </button>
         </motion.div>
 
         {/* <div className="w-[80%] text-white flex justify-center items-center flex-col h-[50vh]    "></div> */}
@@ -394,7 +466,7 @@ function App() {
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
               placeholder="Full Name"
-              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[47.3%] border-maincolor border-[2px]"
               type="text"
             />
             <motion.input
@@ -403,7 +475,7 @@ function App() {
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
               placeholder="Email Adress"
-              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[47.3%] border-maincolor border-[2px]"
               type="text"
             />
             <motion.input
@@ -412,7 +484,7 @@ function App() {
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
               placeholder="Phone Number"
-              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[47.3%] border-maincolor border-[2px]"
               type="text"
             />
             <motion.input
@@ -421,7 +493,7 @@ function App() {
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
               placeholder="Emain Subject"
-              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[44.3%] border-maincolor border-[2px]"
+              className="rounded-xl pl-4 bg-transparent  h-[50px] w-[47.3%] border-maincolor border-[2px]"
               type="text"
             />
             <motion.textarea
@@ -442,7 +514,8 @@ function App() {
               variants={fadeIn("down", 1.8)}
               initial="hidden"
               animate={isInView ? "show" : "hidden"}
-              class="btn button1 font-lg text-lg"
+              class="btn button1 px-[100px] py-[20px] flex justify-center items-center
+               font-lg text-lg"
             >
               {" "}
               Submit
